@@ -2,8 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
-    id("com.google.firebase.firebase-perf")
-}
+    id("com.google.firebase.firebase-perf") }
 
 android {
     namespace = "com.hugo.mysimplefirebaseproject"
@@ -74,4 +73,9 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.7.4"))
     implementation("com.google.firebase:firebase-perf-ktx")
     implementation("com.google.firebase:firebase-analytics-ktx")
+
+    // Add Datadog dependencies
+    implementation("com.datadoghq:dd-sdk-android-rum:2.17.0")
+    implementation("com.datadoghq:dd-sdk-android-okhttp:2.17.0")
+
 }
