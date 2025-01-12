@@ -1,0 +1,43 @@
+
+    assinar o apk via visual studio. Têm como gerar o JKS dentro do visual studio
+
+   https://github.com/appium/appium-espresso-driver (espresso configs)
+
+   npm install -g appium
+
+    pip install robotframework
+    pip install robotframework-appiumlibrary
+
+    criar arquivo de testes
+
+    //instalar driver no appium
+    appium driver list
+    appium driver install espresso (android)
+    appium driver update espresso
+    appium driver list
+
+    //setar JAVA_HOME
+    //set JAVA_HOME="C:\Program Files\Java\jdk-17.0.4.1\"
+
+    appium (roda o appium)
+
+    D:\Android\Sdk\emulator>avdmanager list avd (listar emuladores)
+
+    D:\Android\Sdk\emulator\emulator.exe
+
+    emulator -avd <AVD_NAME>
+    emulator -avd Pixel_3a_API_34_extension_level_7_x86_64 (dá start no emulador)
+    emulator -avd <AVD_NAME> -no-window (emulador sem telinha)
+
+    adb devices ( lista emuladores rodando )
+    adb install app-debug.apk
+    adb install -r <path_to_apk>
+    adb uninstall <package_name>
+    adb shell pm list packages | grep <package_name>
+    adb shell pm list packages | findStr mysimple
+    adb logcat (eh igual a um tail -f)
+    adb uninstall com.hugo.mysimplefirebaseproject
+
+    robot test_suite.robot
+
+    C:\Users\Hugo\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\Scripts\robot .
