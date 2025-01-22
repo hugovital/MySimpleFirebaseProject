@@ -3,6 +3,7 @@ package com.hugo.mysimplefirebaseproject
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.CheckBox
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.hugo.mysimplefirebaseproject.presentation.MainViewModel
@@ -19,22 +20,29 @@ import kotlinx.coroutines.withContext
 class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainViewModel by viewModels { MainViewModelFactory() }
-    //private val client = OkHttpClient()
-
-    private val client = OkHttpClientProvider.getSecureClient()
+    private lateinit var client: OkHttpClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        findViewById<Button>(R.id.buttonClick).setOnClickListener {
-            viewModel.fetchCatFact()
-        }
+        val btnIncompleteChain = findViewById<Button>(R.id.btnIncompleteChain)
+        val checkboxUseAIA = findViewById<CheckBox>(R.id.checkboxUseAIA)
 
-        findViewById<Button>(R.id.buttonIncompleteChain).setOnClickListener {
+        btnIncompleteChain.setOnClickListener {
+            client = if (checkboxUseAIA.isChecked) {
+                OkHttpClientProvider.getSecureClient()
+            } else {
+                OkHttpClient()
+            }
+            
             lifecycleScope.launch {
                 testIncompleteChain()
             }
+        }
+
+        findViewById<Button>(R.id.buttonClick).setOnClickListener {
+            viewModel.fetchCatFact()
         }
 
         findViewById<Button>(R.id.buttonClose).setOnClickListener {
