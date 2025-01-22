@@ -7,6 +7,9 @@ import java.security.cert.X509Certificate;
 
 public class AIAFetcher {
 
+    //AIA descrição
+    //https://www.thesslstore.com/blog/aia-fetching/
+
     public static X509Certificate fetchIntermediateCertificate(X509Certificate cert) throws Exception {
         // Get the AIA extension value
         byte[] aiaBytes = cert.getExtensionValue("1.3.6.1.5.5.7.1.1"); // OID for AIA

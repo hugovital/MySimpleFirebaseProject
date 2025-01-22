@@ -53,7 +53,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private suspend fun testIncompleteChain() {
-
         var url = "https://mobilets8aws.rdhi.com.br:9443/";
         url = "https://mobilets8aws.rdhi.com.br:443/";
         //url = "https://incomplete-chain.badssl.com/";
@@ -61,15 +60,18 @@ class MainActivity : AppCompatActivity() {
         try {
             withContext(Dispatchers.IO) {
                 val request = Request.Builder()
-                    //.url("https://incomplete-chain.badssl.com/")
                     .url(url)
                     .build()
 
-                client.newCall(request).execute()
+                val response = client.newCall(request).execute()
+                
+                // Show success dialog with response details
+                withContext(Dispatchers.Main) {
+                    showSuccessDialog("Status Code: ${response.code}\nMessage: ${response.message}")
+                }
             }
         } catch (e: Exception) {
             withContext(Dispatchers.IO) {
-                //OkHttpCertificateFetcher.runSSLCall();
                 CustomTrustManager.runSSLCall(url);
             }
             showErrorDialog("URL: " + url + " - " + e.message ?: "Unknown error occurred")
@@ -89,6 +91,14 @@ class MainActivity : AppCompatActivity() {
             .setTitle("Error")
             .setMessage(error)
             .setPositiveButton("Close", null)
+            .show()
+    }
+
+    private fun showSuccessDialog(message: String) {
+        AlertDialog.Builder(this)
+            .setTitle("Success")
+            .setMessage(message)
+            .setPositiveButton("OK", null)
             .show()
     }
 }
