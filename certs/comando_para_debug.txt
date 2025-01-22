@@ -1,0 +1,26 @@
+/data/com.hugo.mysimplefirebaseproject/files/downloaded_cert.cer
+
+
+openssl s_client -connect mobilets8aws.rdhi.com.br:9443 -showcerts >> cert_valido_homol.txt
+
+openssl s_client -connect mobilets8aws.rdhi.com.br:443 -showcerts >> cert_erro_homol.txt
+
+openssl s_client -connect mobilepessoafisica5.itau.com.br:443 -showcerts >> cert_valido_homol.txt
+
+openssl s_client -connect mobilepessoafisica5.itau.com.br:443 -showcerts > cert_valido_homol.txt
+
+https://mobilets8aws.rdhi.com.br:443/
+
+
+openssl s_client -connect mobilets8aws.rdhi.com.br:9443 -showcerts
+openssl s_client -connect mobilets8aws.rdhi.com.br:443 -showcerts
+
+openssl s_client -connect mobilepessoafisica5.itau.com.br:443 -showcerts
+
+
+openssl s_client -servername mobilets8aws.rdhi.com.br -connect ALB-Externo-NF2-MobPF-AzA-HTTP2-1377044082.sa-east-1.elb.amazonaws.com:9443 -showcerts
+
+openssl s_client -servername mobilets8aws.rdhi.com.br \
+-connect ALB-Externo-NF2-MobPF-AzA-HTTP2-1377044082.sa-east-1.elb.amazonaws.com:9443 -showcerts
+
+openssl s_client -connect mobilepessoafisica5.itau.com.br:443 -showcerts >> cert_sucesso_prod.txt

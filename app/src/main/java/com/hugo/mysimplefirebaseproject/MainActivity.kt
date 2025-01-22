@@ -48,16 +48,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     private suspend fun testIncompleteChain() {
+
+        var url = "https://mobilets8aws.rdhi.com.br:9443/";
+        url = "https://mobilets8aws.rdhi.com.br:443/";
+        //url = "https://incomplete-chain.badssl.com/";
+
         try {
             withContext(Dispatchers.IO) {
                 val request = Request.Builder()
-                    .url("https://incomplete-chain.badssl.com/")
+                    //.url("https://incomplete-chain.badssl.com/")
+                    .url(url)
                     .build()
 
                 client.newCall(request).execute()
             }
         } catch (e: Exception) {
-            showErrorDialog(e.message ?: "Unknown error occurred")
+            withContext(Dispatchers.IO) {
+                //OkHttpCertificateFetcher.runSSLCall();
+                CustomTrustManager.runSSLCall(url);
+            }
+            showErrorDialog("URL: " + url + " - " + e.message ?: "Unknown error occurred")
         }
     }
 

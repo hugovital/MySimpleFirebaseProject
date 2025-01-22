@@ -6,6 +6,7 @@ import javax.net.ssl.*;
 import java.io.IOException;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
+import java.util.List;
 
 public class OkHttpCertificateFetcher {
 
@@ -16,9 +17,10 @@ public class OkHttpCertificateFetcher {
                 .eventListener(new EventListener() {
                     @Override
                     public void secureConnectEnd(Call call, Handshake handshake) {
-                        System.out.println("Handshake successful. Certificates:");
+                        List<Certificate> certificates = handshake.peerCertificates();
+                        System.out.println("CAWABANGA: Handshake successful. Certificates: " + certificates.size());
                         for (Certificate cert : handshake.peerCertificates()) {
-                            System.out.println(cert.toString());
+                            System.out.println("CAWABANGA: " + cert.toString());
                         }
                     }
 
@@ -33,7 +35,7 @@ public class OkHttpCertificateFetcher {
                 .build();
 
         Request request = new Request.Builder()
-                .url("https://your-endpoint.com")
+                .url("https://incomplete-chain.badssl.com/")
                 .build();
 
         try {
