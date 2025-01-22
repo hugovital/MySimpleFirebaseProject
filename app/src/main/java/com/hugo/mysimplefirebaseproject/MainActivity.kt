@@ -9,14 +9,19 @@ import com.hugo.mysimplefirebaseproject.presentation.MainViewModel
 import com.hugo.mysimplefirebaseproject.presentation.MainViewModelFactory
 import kotlinx.coroutines.launch
 import androidx.appcompat.app.AlertDialog
+import com.hugo.mysimplefirebaseproject.certs.CustomTrustManager
+import com.hugo.mysimplefirebaseproject.certs.OkHttpClientProvider
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
+
     private val viewModel: MainViewModel by viewModels { MainViewModelFactory() }
-    private val client = OkHttpClient()
+    //private val client = OkHttpClient()
+
+    private val client = OkHttpClientProvider.getSecureClient()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

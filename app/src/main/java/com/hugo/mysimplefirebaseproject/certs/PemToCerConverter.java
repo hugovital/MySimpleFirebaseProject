@@ -1,4 +1,4 @@
-package com.hugo.mysimplefirebaseproject;
+package com.hugo.mysimplefirebaseproject.certs;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;

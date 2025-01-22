@@ -1,4 +1,4 @@
-package com.hugo.mysimplefirebaseproject;
+package com.hugo.mysimplefirebaseproject.certs;
 
 import okhttp3.*;
 import javax.net.ssl.*;
@@ -7,23 +7,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
-import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
-import java.security.Principal;
-import java.security.PublicKey;
-import java.security.SignatureException;
 import java.security.cert.CertificateEncodingException;
-import java.security.cert.CertificateException;
-import java.security.cert.CertificateExpiredException;
-import java.security.cert.CertificateNotYetValidException;
 import java.security.cert.X509Certificate;
-import java.util.Arrays;
 import java.util.Base64;
-import java.util.Date;
-import java.util.Set;
 
 public class CustomTrustManager implements X509TrustManager {
 
