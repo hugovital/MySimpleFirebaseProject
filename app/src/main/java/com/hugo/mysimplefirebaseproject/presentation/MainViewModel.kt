@@ -1,5 +1,6 @@
 package com.hugo.mysimplefirebaseproject.presentation
 
+import android.os.Trace
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -14,6 +15,13 @@ class MainViewModel(private val repository: CatFactRepository) : ViewModel() {
     val catFact: StateFlow<String?> = _catFact
 
     fun fetchCatFact() {
+
+        Trace.beginSection( "CAWABANGA_EVENT")
+
+        Thread.sleep(10000)
+
+        Trace.endSection()
+
         viewModelScope.launch {
             repository.getCatFact()
                 .onSuccess { _catFact.value = it.fact }
