@@ -21,6 +21,12 @@
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": []
+        },
+        "crashlytics_service": {
+          "status": "ENABLED"
+        },
+        "performance_service": {
+          "status": "ENABLED"
         }
       }
     }

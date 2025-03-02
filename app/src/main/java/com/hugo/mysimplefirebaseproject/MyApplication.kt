@@ -1,6 +1,8 @@
 package com.hugo.mysimplefirebaseproject
 
+import android.app.ActivityManager
 import android.app.Application
+import android.content.Context
 import com.datadog.android.Datadog
 import com.datadog.android.DatadogSite
 import com.datadog.android.core.configuration.Configuration
@@ -13,8 +15,27 @@ import com.google.firebase.FirebaseApp
 class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+
+        val activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        val memoryClassInMB = activityManager.memoryClass  // Standard heap size in MB
+        val largeMemoryClassInMB = activityManager.largeMemoryClass  // Heap size when using largeHeap
+
+        System.out.println("MEMORY - memoryClassInMB: " + memoryClassInMB);
+        System.out.println("MEMORY - largeMemoryClassInMB: " + largeMemoryClassInMB);
+
+        val totalMemoryInBytes = getTotalDeviceMemory(super.getBaseContext())
+        val totalMemoryInMB = totalMemoryInBytes / (1024 * 1024)
+        System.out.println("MEMORY: Total device memory: $totalMemoryInMB MB")
+
         FirebaseApp.initializeApp(this)
         initializeDatadog()
+    }
+
+    fun getTotalDeviceMemory(context: Context): Long {
+        val activityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        val memoryInfo = ActivityManager.MemoryInfo()
+        activityManager.getMemoryInfo(memoryInfo)
+        return memoryInfo.totalMem  // Total memory in bytes
     }
 
     private fun initializeDatadog() {

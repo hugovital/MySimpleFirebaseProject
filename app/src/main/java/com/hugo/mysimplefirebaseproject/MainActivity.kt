@@ -50,6 +50,29 @@ class MainActivity : AppCompatActivity() {
             System.exit(0)
         }
 
+        val stringList = mutableListOf<String>()
+
+        findViewById<Button>(R.id.btnViewTests).setOnClickListener {
+
+            try {
+
+                for (i in 0..10000000) {
+                    stringList.add("CAWABANGA")
+                }
+
+                AlertDialog.Builder(this)
+                    .setMessage("Testes " + stringList.size)
+                    .setPositiveButton("OK", null)
+                    .show()
+
+            } catch (e : Exception){
+                System.out.println("CAWABANGA");
+                e.printStackTrace();
+                System.out.println("/CAWABANGA");
+
+            }
+        }
+
         // Observe cat facts
         lifecycleScope.launch {
             viewModel.catFact.collect { fact ->

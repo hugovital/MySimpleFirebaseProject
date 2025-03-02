@@ -73,6 +73,7 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.7.4"))
     implementation("com.google.firebase:firebase-perf-ktx")
     implementation("com.google.firebase:firebase-analytics-ktx")
+    //implementation("com.google.firebase:firebase-crashlytics-ktx")
 
     // Add Datadog dependencies
     implementation("com.datadoghq:dd-sdk-android-rum:2.17.0")
