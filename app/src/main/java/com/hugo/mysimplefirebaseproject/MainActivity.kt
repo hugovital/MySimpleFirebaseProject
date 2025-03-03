@@ -1,5 +1,6 @@
 package com.hugo.mysimplefirebaseproject
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -22,8 +23,11 @@ class MainActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModels { MainViewModelFactory() }
     private lateinit var client: OkHttpClient
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
 
         val btnIncompleteChain = findViewById<Button>(R.id.btnIncompleteChain)
@@ -60,10 +64,15 @@ class MainActivity : AppCompatActivity() {
                     stringList.add("CAWABANGA")
                 }
 
+                /*
                 AlertDialog.Builder(this)
                     .setMessage("Testes " + stringList.size)
                     .setPositiveButton("OK", null)
                     .show()
+                 */
+
+                val intent = Intent(this, CustomViewActivity::class.java)
+                startActivity(intent)
 
             } catch (e : Exception){
                 System.out.println("CAWABANGA");
