@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModels { MainViewModelFactory() }
     private lateinit var client: OkHttpClient
 
+    var newIntent: Intent? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -71,8 +72,11 @@ class MainActivity : AppCompatActivity() {
                     .show()
                  */
 
-                val intent = Intent(this, CustomViewActivity::class.java)
-                startActivity(intent)
+
+                //val intent = Intent(this, CustomViewActivity::class.java)
+
+                newIntent = newIntent ?: Intent(this, CustomViewActivity::class.java)
+                startActivity(newIntent)
 
             } catch (e : Exception){
                 System.out.println("CAWABANGA");

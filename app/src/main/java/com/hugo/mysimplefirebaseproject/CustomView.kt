@@ -20,7 +20,7 @@ class CustomView @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas) {
 
-        Thread.sleep(5000)
+        //Thread.sleep(200)
 
         super.onDraw(canvas)
         val centerX = width / 2f
