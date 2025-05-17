@@ -47,6 +47,20 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.buttonClick).setOnClickListener {
+
+            var list = mutableListOf<String>()
+            val thread = Thread {
+                while ( true ){
+                    var s : String = "CAWABANGA"
+                    //println("Hello from thread")
+                    list.add(s)
+                    //Thread.sleep(1);
+                }
+
+            }
+
+            //thread.start()
+
             viewModel.fetchCatFact()
         }
 
