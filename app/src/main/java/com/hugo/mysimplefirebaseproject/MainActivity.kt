@@ -11,6 +11,7 @@ import com.hugo.mysimplefirebaseproject.presentation.MainViewModel
 import com.hugo.mysimplefirebaseproject.presentation.MainViewModelFactory
 import kotlinx.coroutines.launch
 import androidx.appcompat.app.AlertDialog
+import androidx.core.app.FrameMetricsAggregator
 import com.hugo.mysimplefirebaseproject.certs.CustomTrustManager
 import com.hugo.mysimplefirebaseproject.certs.OkHttpClientProvider
 import okhttp3.OkHttpClient
@@ -30,6 +31,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
+
+        //val aggregator = FrameMetricsAggregator()
+        //aggregator.add(this)
 
         val btnIncompleteChain = findViewById<Button>(R.id.btnIncompleteChain)
         val checkboxUseAIA = findViewById<CheckBox>(R.id.checkboxUseAIA)
